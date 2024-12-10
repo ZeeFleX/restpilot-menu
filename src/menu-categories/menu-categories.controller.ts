@@ -1,5 +1,5 @@
 import { Controller } from "@nestjs/common";
-import { ICreatemenuCategoryDTO } from "src/types";
+import { ICreateMenuCategoryDTO } from "src/types";
 import { MenuCategoriesService } from "./menu-categories.service";
 import { RabbitRPC } from "@golevelup/nestjs-rabbitmq";
 
@@ -21,7 +21,7 @@ export class MenuCategoriesController {
     routingKey: "menu.menuCategories.create",
     queue: "menu.menuCategories.create",
   })
-  async create(createMenuCategoryInput: CreateMenuCategoryInput) {
-    return this.menuCategoriesService.create(createMenuCategoryInput);
+  async create({ request }) {
+    return this.menuCategoriesService.create(request);
   }
 }
