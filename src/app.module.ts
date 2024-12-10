@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
+import { MenuCategoriesModule } from './menu-categories/menu-categories.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
     }),
     DatabaseModule,
     RabbitmqModule,
+    MenuCategoriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
