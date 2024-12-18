@@ -1,27 +1,19 @@
 import { Controller } from "@nestjs/common";
 import { ICreateMenuCategoryDTO } from "src/types";
 import { MenuCategoriesService } from "./menu-categories.service";
-import { RabbitRPC } from "@golevelup/nestjs-rabbitmq";
+import { MessagePattern, Payload } from "@nestjs/microservices";
 
 @Controller()
 export class MenuCategoriesController {
-  constructor(private readonly menuCategoriesService: MenuCategoriesService) {}
+  constructor(private readonly service: MenuCategoriesService) {}
 
-  @RabbitRPC({
-    exchange: "menu-exchange",
-    routingKey: "menu.menuCategories.findAll",
-    queue: "menu.menuCategories.findAll",
-  })
+  @MessagePattern("menuCategories.findAll")
   async findAll() {
-    return this.menuCategoriesService.findAll();
+    return this.service.findAll();
   }
 
-  @RabbitRPC({
-    exchange: "menu-exchange",
-    routingKey: "menu.menuCategories.create",
-    queue: "menu.menuCategories.create",
-  })
-  async create({ request }) {
-    return this.menuCategoriesService.create(request);
+  @MessagePattern("menuCategories.create")
+  async create(@Payload() payload: ICreateMenuCategoryDTO) {
+    return this.service.create(payload);
   }
 }
