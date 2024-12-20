@@ -1,5 +1,5 @@
 import { Controller } from "@nestjs/common";
-import { ICreateMenuCategoryDTO } from "src/types";
+import { ICreateMenuCategoryRequestDTO } from "src/types";
 import { MenuCategoriesService } from "./menu-categories.service";
 import { MessagePattern, Payload } from "@nestjs/microservices";
 
@@ -13,7 +13,7 @@ export class MenuCategoriesController {
   }
 
   @MessagePattern("menuCategories.create")
-  async create(@Payload() payload: ICreateMenuCategoryDTO) {
+  async create(@Payload() payload: ICreateMenuCategoryRequestDTO) {
     return this.service.create(payload);
   }
 }

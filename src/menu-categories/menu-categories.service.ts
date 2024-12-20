@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/database/prisma.service";
-import { ICreateMenuCategoryDTO } from "src/types";
+import { ICreateMenuCategoryRequestDTO } from "src/types";
 
 @Injectable()
 export class MenuCategoriesService {
@@ -10,7 +10,7 @@ export class MenuCategoriesService {
     return this.db.menuCategory.findMany();
   }
 
-  create(createMenuCategoryInput: ICreateMenuCategoryDTO) {
+  create(createMenuCategoryInput: ICreateMenuCategoryRequestDTO) {
     return this.db.menuCategory.create({
       data: createMenuCategoryInput,
     });
