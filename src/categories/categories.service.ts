@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/database/prisma.service";
-import { MenuDTO } from "src/types/shared";
+import { MenuDTO } from "shared-types";
 
 @Injectable()
 export class CategoriesService {

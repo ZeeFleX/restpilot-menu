@@ -1,5 +1,5 @@
 import { Controller } from "@nestjs/common";
-import { MenuDTO } from "src/types/shared";
+import { MenuDTO } from "shared-types";
 import { CategoriesService } from "./categories.service";
 import { MessagePattern, Payload } from "@nestjs/microservices";
 
